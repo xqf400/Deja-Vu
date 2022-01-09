@@ -25,24 +25,13 @@
 
 	if ([dejavuView isHidden]) return;
 
-	[[NSNotificationCenter defaultCenter] postNotificationName:@"dejavuDeactivate" object:nil];
+	[[%c(SBLockScreenManager) sharedInstance] deactivateDejaVu];
 
 }
 
 %end
 
 %hook SBLockScreenManager
-
-- (id)init { // register notification observers
-
-	NSNotificationCenter* notificationCenter = [NSNotificationCenter defaultCenter];
-	[notificationCenter removeObserver:self];
-	[notificationCenter addObserver:self selector:@selector(activateDejaVu) name:@"dejavuActivate" object:nil];
-	[notificationCenter addObserver:self selector:@selector(deactivateDejaVu) name:@"dejavuDeactivate" object:nil];
-
-	return %orig;
-
-}
 
 - (void)lockUIFromSource:(int)arg1 withOptions:(id)arg2 { // set deja vu active when screen turned off
 
@@ -240,7 +229,7 @@
 	if (!deactivateWithTapSwitch) return;
 	if ([dejavuView isHidden]) return;
 
-	[[NSNotificationCenter defaultCenter] postNotificationName:@"dejavuDeactivate" object:nil];
+	[[%c(SBLockScreenManager) sharedInstance] deactivateDejaVu];
 
 }
 
@@ -254,7 +243,7 @@
 
 	if (deactivateWithRaiseToWakeSwitch && isDejaVuActive) {
 		dispatch_async(dispatch_get_main_queue(), ^{
-			[[NSNotificationCenter defaultCenter] postNotificationName:@"dejavuDeactivate" object:nil];
+			[[%c(SBLockScreenManager) sharedInstance] deactivateDejaVu];
 		});
 	}
 
@@ -268,7 +257,7 @@
 
 	BOOL isCharging = %orig;
 
-	if (isCharging && disableWhileChargingSwitch) [[NSNotificationCenter defaultCenter] postNotificationName:@"dejavuDeactivate" object:nil];
+	if (isCharging && disableWhileChargingSwitch) [[%c(SBLockScreenManager) sharedInstance] deactivateDejaVu];
 
 	return isCharging;
 

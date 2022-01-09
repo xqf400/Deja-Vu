@@ -50,6 +50,7 @@ BOOL hideUnlockTextAndHomebarSwitch = YES;
 @end
 
 @interface SBLockScreenManager : NSObject
++ (id)sharedInstance;
 - (BOOL)isLockScreenVisible;
 - (void)setBiometricAutoUnlockingDisabled:(BOOL)arg1 forReason:(id)arg2;
 - (void)activateDejaVu;
