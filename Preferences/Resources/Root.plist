@@ -34,7 +34,7 @@
  			<key>detail</key>
  			<string>DVUBehaviorSubPreferencesListController</string>
  			<key>DVUSub</key>
- 			<string>Sub/Behavior</string>
+ 			<string>sub/behavior</string>
  		</dict>
 		<dict>
  			<key>cell</key>
@@ -44,7 +44,7 @@
  			<key>detail</key>
  			<string>DVUCustomizationSubPreferencesListController</string>
  			<key>DVUSub</key>
- 			<string>Sub/Customization</string>
+ 			<string>sub/customization</string>
  		</dict>
 
 		<dict>
@@ -84,7 +84,7 @@
  			<key>detail</key>
  			<string>DVUContributorsSubPreferencesListController</string>
  			<key>DVUSub</key>
- 			<string>Sub/contributors</string>
+ 			<string>sub/credits</string>
  		</dict>
 
 		<dict>
@@ -101,7 +101,7 @@
 			<key>subtitle</key>
 			<string>Give your lock screen clock a new look</string>
 			<key>icon</key>
-			<string>Featured/Heartlines.png</string>
+			<string>featured/Heartlines.png</string>
 			<key>url</key>
 			<string>https://repo.litten.love/depictions/Heartlines/</string>
 		</dict>
@@ -113,7 +113,7 @@
 			<key>subtitle</key>
 			<string>Let a moon icon appear when dnd is on</string>
 			<key>icon</key>
-			<string>Featured/Lune.png</string>
+			<string>featured/Lune.png</string>
 			<key>url</key>
 			<string>https://repo.litten.love/depictions/Lune/</string>
 		</dict>
