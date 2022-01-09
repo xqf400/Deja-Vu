@@ -606,7 +606,7 @@
 	[preferences registerUnsignedInteger:&hapticFeedbackStrengthValue default:0 forKey:@"hapticFeedbackStrength"];
 	[preferences registerBool:&disableBiometricsSwitch default:YES forKey:@"disableBiometrics"];
 	[preferences registerBool:&pocketDetectionSwitch default:YES forKey:@"pocketDetection"];
-	[preferences registerBool:&dimDisplaySwitch default:YES forKey:@"dimDisplay"];
+	[preferences registerBool:&dimDisplaySwitch default:NO forKey:@"dimDisplay"];
 	[preferences registerBool:&pixelShiftSwitch default:YES forKey:@"pixelShift"];
 	[preferences registerBool:&enableLowPowerModeSwitch default:YES forKey:@"enableLowPowerMode"];
 	[preferences registerBool:&enableDoNotDisturbSwitch default:NO forKey:@"enableDoNotDisturb"];
