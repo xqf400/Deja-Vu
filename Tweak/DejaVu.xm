@@ -1,5 +1,7 @@
 #import "DejaVu.h"
 
+SpringBoard* springboard = nil;
+
 %group DejaVu
 
 %hook CSCoverSheetViewController
@@ -16,6 +18,8 @@
 	[dejavuView setAlpha:1];
 	[dejavuView setHidden:YES];
 	[[self view] insertSubview:dejavuView atIndex:0];
+
+	springboard = (SpringBoard *)[objc_getClass("SpringBoard") sharedApplication];
 
 }
 
@@ -56,7 +60,6 @@
 	[dejavuView setAlpha:1];
 	[dejavuView setHidden:NO];
 	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-		SpringBoard* springboard = (SpringBoard *)[objc_getClass("SpringBoard") sharedApplication];
 		[springboard _simulateHomeButtonPress];
 		NSNotificationCenter* notificationCenter = [NSNotificationCenter defaultCenter];
 
@@ -117,7 +120,6 @@
 		[notificationCenter postNotificationName:@"SBQuietModeStatusChangedNotification" object:nil];
 	}
 
-	SpringBoard* springboard = (SpringBoard *)[objc_getClass("SpringBoard") sharedApplication];
 	[[springboard proximitySensorManager] _disableProx];
 
 	[notificationCenter postNotificationName:@"dejavuUpdateIdleTimer" object:nil];
@@ -159,7 +161,6 @@
 %new
 - (void)deactivateDueToInactivity { // deactivate when inactivity timer is up
 
-	SpringBoard* springboard = (SpringBoard *)[objc_getClass("SpringBoard") sharedApplication];
 	[springboard _simulateLockButtonPress];
 
 	[inactivityTimer invalidate];
