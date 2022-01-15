@@ -11,7 +11,7 @@ BOOL isDejaVuActive = NO;
 int previousLowPowerModeState = 0;
 BOOL wasAutoBrightnessEnabled = YES;
 
-UIView* dejavuView = nil;
+UIView* dejaVuView = nil;
 UIImpactFeedbackGenerator* generator = nil;
 NSTimer* inactivityTimer = nil;
 NSTimer* pixelShiftTimer = nil;

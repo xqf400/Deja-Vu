@@ -12,12 +12,12 @@ SpringBoard* springboard = nil;
 
 	isDejaVuActive = NO;
 
-	dejavuView = [[UIView alloc] initWithFrame:[[self view] bounds]];
-	[dejavuView setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight];
-	[dejavuView setBackgroundColor:[UIColor blackColor]];
-	[dejavuView setAlpha:1];
-	[dejavuView setHidden:YES];
-	[[self view] insertSubview:dejavuView atIndex:0];
+	dejaVuView = [[UIView alloc] initWithFrame:[[self view] bounds]];
+	[dejaVuView setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight];
+	[dejaVuView setBackgroundColor:[UIColor blackColor]];
+	[dejaVuView setAlpha:1];
+	[dejaVuView setHidden:YES];
+	[[self view] insertSubview:dejaVuView atIndex:0];
 
 	springboard = (SpringBoard *)[objc_getClass("SpringBoard") sharedApplication];
 
@@ -27,7 +27,7 @@ SpringBoard* springboard = nil;
 
 	%orig;
 
-	if ([dejavuView isHidden]) return;
+	if ([dejaVuView isHidden]) return;
 
 	[[%c(SBLockScreenManager) sharedInstance] deactivateDejaVu];
 
@@ -44,9 +44,9 @@ SpringBoard* springboard = nil;
 	if (!disableWhileChargingSwitch || (disableWhileChargingSwitch && ![[%c(SBUIController) sharedInstance] isOnAC])) {
 		isDejaVuActive = YES;
 
-		if ([dejavuView isHidden] && !onlyWhenChargingSwitch)
+		if ([dejaVuView isHidden] && !onlyWhenChargingSwitch)
 			[self activateDejaVu];
-		else if ([dejavuView isHidden] && onlyWhenChargingSwitch && [[%c(SBUIController) sharedInstance] isOnAC])
+		else if ([dejaVuView isHidden] && onlyWhenChargingSwitch && [[%c(SBUIController) sharedInstance] isOnAC])
 			[self activateDejaVu];
 		else
 			[self deactivateDejaVu];
@@ -57,8 +57,8 @@ SpringBoard* springboard = nil;
 %new
 - (void)activateDejaVu { // enable deja vu
 
-	[dejavuView setAlpha:1];
-	[dejavuView setHidden:NO];
+	[dejaVuView setAlpha:1];
+	[dejaVuView setHidden:NO];
 	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
 		[springboard _simulateHomeButtonPress];
 		NSNotificationCenter* notificationCenter = [NSNotificationCenter defaultCenter];
@@ -100,9 +100,9 @@ SpringBoard* springboard = nil;
 	isDejaVuActive = NO;
 
 	[UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-		[dejavuView setAlpha:0];
+		[dejaVuView setAlpha:0];
 	} completion:^(BOOL finished) {
-		[dejavuView setHidden:YES];
+		[dejaVuView setHidden:YES];
 	}];
 
 	NSNotificationCenter* notificationCenter = [NSNotificationCenter defaultCenter];
@@ -228,7 +228,7 @@ SpringBoard* springboard = nil;
 	%orig;
 
 	if (!deactivateWithTapSwitch) return;
-	if ([dejavuView isHidden]) return;
+	if ([dejaVuView isHidden]) return;
 
 	[[%c(SBLockScreenManager) sharedInstance] deactivateDejaVu];
 
