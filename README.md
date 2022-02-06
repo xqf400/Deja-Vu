@@ -2,7 +2,7 @@
 Fully featured always on display
 
 ## Preview
-<img src="preview.png">
+<img src="Preview.png">
 
 ## Installation
 1. Add this repository to your package manager: `TBD`
