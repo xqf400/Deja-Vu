@@ -1,5 +1,5 @@
 # Déjà Vu 🕰️
-I've seen that before
+Fully featured always on display
 
 ## Preview
 <img src="preview.png">
